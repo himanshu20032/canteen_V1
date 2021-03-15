@@ -1,10 +1,13 @@
 package com.mc.mcfirebase.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.mc.mcfirebase.foodDetailActivity;
 import com.mc.mcfirebase.himViewHolder;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,6 +54,17 @@ public class HomeFragment extends Fragment {
             protected void onBindViewHolder(@NonNull himViewHolder holder, int position, @NonNull foodData model) {
                 holder.textView.setText(model.getName());
                 Picasso.with(getContext()).load(model.getImage()).into(holder.imageView);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getContext(),foodDetailActivity.class);
+                        intent.putExtra("foodID",adapter.getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
+
+
             }
 
             @NonNull

@@ -11,13 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.McFirebase">
+        <activity android:name=".foodDetailActivity"></activity>
         <activity android:name=".splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MenuActivity"
@@ -25,9 +25,7 @@
             android:theme="@style/Theme.McFirebase.NoActionBar" />
         <activity android:name=".signupActivity" />
         <activity android:name=".signinActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
