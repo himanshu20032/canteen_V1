@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.gallery.GalleryFragment">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="ExtraText">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="top"
+            app:srcCompat="@drawable/foodbackground" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Description"
+            android:layout_below="@+id/imageView"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"/>
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A hamburger (also burger for short) is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun. The patty may be pan fried, grilled, smoked or flame broiled. Hamburgers are often served with cheese, lettuce, tomato, onion, pickles, bacon, or chiles; condiments such as ketchup, mustard, mayonnaise, relish, or a 'special sauce', often a variation of Thousand Island dressing; and are frequently placed on sesame seed buns. A hamburger topped with cheese is called a cheeseburger.The term 'burger' can also be applied to the meat patty on its own, especially in the United Kingdom, where the term 'patty' is rarely used, or the term can even refer simply to ground beef. Since the term hamburger usually implies beef, for clarity 'burger' may be prefixed with the type of meat or meat substitute used, as in beef burger, turkey burger, bison burger, or veggie burger."
+            android:layout_below="@+id/description"
+            />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/desc"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:text="-1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/desc"
+            android:layout_marginTop="3dp"
+            android:layout_centerInParent="true"
+            android:text="ADD TO CART" />
+
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/desc"
+            android:layout_marginLeft="216dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:text="+1"
+            android:layout_toRightOf="@+id/button1" />;
+
+        <TextView
+            android:id="@+id/quantity"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Quantity"
+            android:layout_below="@+id/button2"
+            android:gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/quant"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="1"
+            android:layout_below="@+id/quantity"
+            android:gravity="center_horizontal"
+            />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

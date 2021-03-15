@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/foodLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/foodlogo" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        >
+
+        <info.hoang8f.widget.FButton
+            android:layout_marginLeft="10dp"
+            android:id="@+id/signUp"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+
+            android:text="SIGN UP">
+
+        </info.hoang8f.widget.FButton>
+
+        <info.hoang8f.widget.FButton
+            android:layout_marginLeft="30dp"
+            android:id="@+id/signIn"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+
+            android:text="SIGN IN">
+
+        </info.hoang8f.widget.FButton>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+
+
+
+
+

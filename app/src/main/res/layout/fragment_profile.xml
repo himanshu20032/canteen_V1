@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profileFragment">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PROFILE">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".PROFILE"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:padding="20dp"
+                android:background="#fece2f">
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:fontFamily="cursive"
+                    android:gravity="center_horizontal"
+                    android:text="FOOD ORDER"
+
+                    android:textSize="60sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="cursive"
+                    android:gravity="center_horizontal"
+                    android:text="- Your Own Canteen"
+                    android:layout_marginVertical="20dp"
+                    android:textSize="20sp"
+                    android:layout_below="@id/textView"
+                    android:layout_marginLeft="200dp"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="216dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-100dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="50dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/user"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/foodlogo" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USER NAME"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@+id/card_view"
+                    android:textSize="30sp"
+
+                    android:layout_gravity="center_horizontal"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/cardview_dark_background"
+                    tools:ignore="MissingPrefix" />
+
+
+                <TextView
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="_Rollnumber"
+                    android:id="@+id/_Rollnumber"
+                    android:layout_below="@+id/username"
+
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/_Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/_Rollnumber"
+                    android:layout_marginVertical="10dp"
+                    android:gravity="center_horizontal"
+                    android:hint="email"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="_Phonenumber"
+                    android:id="@+id/phonenumber"
+                    android:layout_below="@id/_Email"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="pending amount"
+                    android:id="@+id/_Pendingamount"
+                    android:layout_below="@+id/_Phonenumber"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</FrameLayout>
