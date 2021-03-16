@@ -54,6 +54,7 @@ public class Database extends SQLiteOpenHelper {
         values.put(foodname,food.getName());
         values.put(quantity,quant);
         values.put(price,Integer.parseInt(food.getPrice()));
+        String query = "SELECT "+id+" from "+tablename+" WHERE EXISTS( SELECT id from "+tablename+" where "+id+" = "+food.getId();
         db.insert(tablename, null, values);
         db.close();
     }
