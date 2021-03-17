@@ -14,12 +14,11 @@
         />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/extended_fab"
+        android:id="@+id/placeOrder"
         android:layout_width="78dp"
         android:layout_height="39dp"
         android:layout_marginBottom="60dp"
         android:text="ORDER"
-
         android:textAlignment="center"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/cart_recycler_view"
@@ -27,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="#7CB342" />
-    />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
