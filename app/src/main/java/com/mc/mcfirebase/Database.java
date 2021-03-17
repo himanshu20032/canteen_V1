@@ -101,6 +101,21 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
+    foodData getOne(String token) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(tablename, new String[] { id , foodname,quantity}, id + "=?", new String[] { token }, null, null, null, null);
+        if(cursor.getCount()==0)
+            return null;
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+
+        foodData food = new foodData(null,cursor.getString(1),null,cursor.getString(0), cursor.getString(2));
+        return food;
+    }
+
 
 
 
