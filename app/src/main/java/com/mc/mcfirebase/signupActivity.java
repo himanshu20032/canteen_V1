@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mc.mcfirebase.Model.foodData;
 import com.mc.mcfirebase.Model.userData;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -62,7 +63,7 @@ public class signupActivity extends AppCompatActivity {
 
 
 
-                createnewuser(newuser.getEmail(),newuser.getPassword(),phone,newuser.getName());
+                createnewuser(newuser);
 
 
                 /*
@@ -92,22 +93,22 @@ public class signupActivity extends AppCompatActivity {
 
     }
 
-    private void createnewuser(String email1, String pass1,String phone,String Name) {
+    private void createnewuser(userData newuser) {
 
 
-        firebaseAuth.createUserWithEmailAndPassword(email1,pass1).addOnCompleteListener(signupActivity.this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(newuser.getEmail(),newuser.getPassword()).addOnCompleteListener(signupActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-
                     Toast.makeText(signupActivity.this,"register success",Toast.LENGTH_SHORT).show();
                     HashMap<String,Object> data = new HashMap<>();
-                    data.put("Name",Name);
-                    data.put("Email",email1);
-                    data.put("Phone Number",phone);
-                    data.put("Password",pass1);
-                    FirebaseDatabase.getInstance().getReference().child("SignUp Database").child(task.getResult().getUser().getUid()).updateChildren(data);
+                    data.put("email",newuser.getEmail());
+                    data.put("name",newuser.getName());
+                    data.put("password",newuser.getPassword());
+                    data.put("phone",newuser.getPhone());
+                    data.put("roll",newuser.getRoll());
+                    FirebaseDatabase.getInstance().getReference().child("User").child(newuser.getPhone()).updateChildren(data);
                     startActivity(new Intent(signupActivity.this,signinActivity.class));
                     finish();
                 }

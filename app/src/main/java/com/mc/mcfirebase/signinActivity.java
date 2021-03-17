@@ -149,7 +149,7 @@ public class signinActivity extends AppCompatActivity {
 
                 }
                 else
-                {
+                {/*
                     user_table.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -178,11 +178,12 @@ public class signinActivity extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError error) {
                             Toast.makeText(signinActivity.this,"ERROR",Toast.LENGTH_LONG);
                         }
-                    });
+                    });*/
                     login(email_text,password);
                 }
             }
         });
+
 
         //Google sign IN Started
         firebaseAuth = FirebaseAuth.getInstance();
@@ -204,7 +205,9 @@ public class signinActivity extends AppCompatActivity {
         });
         if (firebaseAuth.getCurrentUser()!=null)
         {
+            setCurrentUserInfo(user_table);
             startActivity(new Intent(signinActivity.this,MenuActivity.class));
+
             finish();
         }
 
@@ -305,6 +308,38 @@ public class signinActivity extends AppCompatActivity {
 
                 Toast.makeText(signinActivity.this,"login success",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(signinActivity.this,MenuActivity.class));
+            }
+        });
+    }
+
+    private void setCurrentUserInfo(DatabaseReference user_table){
+        user_table.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.child(editphone.getEditText().getText().toString()).exists()){
+                    userData user = snapshot.child(editphone.getEditText().getText().toString()).getValue(userData.class);
+                    Log.e("data received",snapshot.child(editphone.getEditText().getText().toString()).getValue().toString());
+
+                    if (user.getPassword().equals(editpassword.getEditText().getText().toString())) {
+                        //Toast.makeText(signinActivity.this, "SIGN IN SUCCESS", Toast.LENGTH_LONG).show();
+
+                        currentUser.currentUser = user;
+
+
+                    } else {
+                        Toast.makeText(signinActivity.this, "UNSUCCESSFUL", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else{
+                    Toast.makeText(signinActivity.this,"User not exist",Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(signinActivity.this,"ERROR",Toast.LENGTH_LONG);
             }
         });
     }
