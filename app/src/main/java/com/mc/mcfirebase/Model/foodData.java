@@ -7,12 +7,14 @@ public class foodData {
     private String id;
     private String Price;
 
+
     public foodData(String image, String name, String desc, String id, String price) {
         Image = image;
         Name = name;
         Desc = desc;
         this.id = id;
         Price = price;
+
     }
 
     public String getPrice() {

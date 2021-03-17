@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mc.mcfirebase.Model.currentUser;
 import com.mc.mcfirebase.Model.foodData;
 import com.mc.mcfirebase.Model.userData;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -54,14 +55,12 @@ public class signupActivity extends AppCompatActivity {
                 String phone = editphone.getEditText().getText().toString();
                 newuser.setName(editname.getEditText().getText().toString());
                 newuser.setPassword(editpassword.getEditText().getText().toString());
-                newuser.setRoll(editpassword.getEditText().getText().toString());
+                newuser.setRoll(editroll.getEditText().getText().toString());
                 newuser.setEmail(editemail.getEditText().getText().toString());
                 newuser.setPhone(editphone.getEditText().getText().toString());
                 Log.e("error1",newuser.getEmail());
                 if(firebaseAuth == null)
                 Log.e("error2",newuser.getPassword());
-
-
 
                 createnewuser(newuser);
 
@@ -101,21 +100,49 @@ public class signupActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(signupActivity.this,"register success",Toast.LENGTH_SHORT).show();
+
                     HashMap<String,Object> data = new HashMap<>();
                     data.put("email",newuser.getEmail());
                     data.put("name",newuser.getName());
                     data.put("password",newuser.getPassword());
                     data.put("phone",newuser.getPhone());
                     data.put("roll",newuser.getRoll());
-                    FirebaseDatabase.getInstance().getReference().child("User").child(newuser.getPhone()).updateChildren(data);
-                    startActivity(new Intent(signupActivity.this,signinActivity.class));
-                    finish();
+                    data.put("tokenid",task.getResult().getUser().getUid());
+                    FirebaseDatabase.getInstance().getReference().child("User").child(task.getResult().getUser().getUid()).updateChildren(data);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference user_table = database.getReference("User");
+                    setCurrentUserInfo(user_table,newuser,task.getResult().getUser().getUid());
+                    Toast.makeText(signupActivity.this,"register success",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     Toast.makeText(signupActivity.this,"register unsuccessful",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void setCurrentUserInfo(DatabaseReference user_table,userData newuser,String tokenID){
+        user_table.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.child(tokenID).exists()){
+                    userData user = snapshot.child(tokenID).getValue(userData.class);
+                    Log.e("data received",user.getEmail());
+                    currentUser.currentUser = user;
+                    startActivity(new Intent(signupActivity.this,MenuActivity.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(signupActivity.this,"User not exist",Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(signupActivity.this,"ERROR",Toast.LENGTH_LONG);
             }
         });
     }

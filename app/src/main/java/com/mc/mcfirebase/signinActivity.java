@@ -52,11 +52,11 @@ public class signinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
         editphone =  findViewById(R.id.editPhone);
         editpassword =  findViewById(R.id.editPassword);
         signin = (Button) findViewById(R.id.signIn);
         signup = (Button) findViewById(R.id.signUp);
-
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +68,14 @@ public class signinActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference user_table = database.getReference("User");
-
+        firebaseAuth = FirebaseAuth.getInstance();
+        if (firebaseAuth.getCurrentUser()!=null)
+        {
+            Log.e("error------------------",firebaseAuth.getCurrentUser().getPhoneNumber());
+            setCurrentUserInfo(user_table,firebaseAuth.getCurrentUser().getUid());
+            // startActivity(new Intent(signinActivity.this,MenuActivity.class));
+            // finish();
+        }
 
         ///////////////////////////////////earlier////////////////////////////////////////////////
         /*
@@ -186,14 +193,14 @@ public class signinActivity extends AppCompatActivity {
 
 
         //Google sign IN Started
-        firebaseAuth = FirebaseAuth.getInstance();
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(this,gso);
-
+    /*
         googleSignInButton = findViewById(R.id.gmailSignin);
 
         googleSignInButton.setOnClickListener(new View.OnClickListener() {
@@ -203,13 +210,11 @@ public class signinActivity extends AppCompatActivity {
                 Log.d("HI","1");
             }
         });
-        if (firebaseAuth.getCurrentUser()!=null)
-        {
-            setCurrentUserInfo(user_table);
-            startActivity(new Intent(signinActivity.this,MenuActivity.class));
 
-            finish();
-        }
+
+        */
+
+
 
     }
 
@@ -293,8 +298,6 @@ public class signinActivity extends AppCompatActivity {
 
             Toast.makeText(signinActivity.this,personName+""+personEmail,Toast.LENGTH_SHORT).show();
 
-
-
             Intent i =new Intent(signinActivity.this,MenuActivity.class);
             startActivity(i);
         }
@@ -312,24 +315,17 @@ public class signinActivity extends AppCompatActivity {
         });
     }
 
-    private void setCurrentUserInfo(DatabaseReference user_table){
+    private void setCurrentUserInfo(DatabaseReference user_table,String tokenID){
         user_table.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if(snapshot.child(editphone.getEditText().getText().toString()).exists()){
-                    userData user = snapshot.child(editphone.getEditText().getText().toString()).getValue(userData.class);
-                    Log.e("data received",snapshot.child(editphone.getEditText().getText().toString()).getValue().toString());
-
-                    if (user.getPassword().equals(editpassword.getEditText().getText().toString())) {
-                        //Toast.makeText(signinActivity.this, "SIGN IN SUCCESS", Toast.LENGTH_LONG).show();
-
-                        currentUser.currentUser = user;
-
-
-                    } else {
-                        Toast.makeText(signinActivity.this, "UNSUCCESSFUL", Toast.LENGTH_LONG).show();
-                    }
+                if(snapshot.child(tokenID).exists()){
+                    userData user = snapshot.child(tokenID).getValue(userData.class);
+                    Log.e("data received",user.getEmail());
+                    currentUser.currentUser = user;
+                    startActivity(new Intent(signinActivity.this,MenuActivity.class));
+                    finish();
                 }
                 else{
                     Toast.makeText(signinActivity.this,"User not exist",Toast.LENGTH_LONG).show();

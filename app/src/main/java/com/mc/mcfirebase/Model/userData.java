@@ -7,7 +7,15 @@ public class userData {
     private String Roll;
     private String Email;
     private String Phone;
+    private String tokenid;
 
+    public String getTokenid() {
+        return tokenid;
+    }
+
+    public void setTokenid(String tokenid) {
+        this.tokenid = tokenid;
+    }
     public String getEmail() {
         return Email;
     }
