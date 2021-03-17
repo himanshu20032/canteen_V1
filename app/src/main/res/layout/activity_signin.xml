@@ -97,6 +97,10 @@ android:orientation="vertical">
         android:textColor="#000"
         android:text="Sign Up"
         android:elevation="0dp" />
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/gmailSignin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>
