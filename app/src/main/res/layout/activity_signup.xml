@@ -127,17 +127,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/submit"
-            android:text="Submit"
-            android:layout_width="match_parent"
+        <com.google.android.material.button.MaterialButton
+          android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000"
-            android:textColor="#fff"
-
+            android:text="Submit"
+            android:backgroundTint="@color/design_default_color_secondary"
+            android:fontFamily="sans-serif-black"
+            app:cornerRadius="20dp"
+            android:id="@+id/submit"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
-
+            />
 
     </LinearLayout>
 

@@ -15,13 +15,13 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/extended_fab"
-        android:layout_width="78dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:text="ORDER"
-
+        android:textColor="@color/white"
         android:textAlignment="center"
-        android:textSize="10dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/cart_recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

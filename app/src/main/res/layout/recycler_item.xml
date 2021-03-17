@@ -10,39 +10,60 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             app:cardElevation="10dp"
             app:cardCornerRadius="20dp"
-            android:layout_margin="10dp"
             app:cardBackgroundColor="@color/white"
             app:cardMaxElevation="12dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
+            android:backgroundTint="@color/design_default_color_secondary"
             >
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 >
                 <ImageView
                     android:id="@+id/foodImage"
-                    android:layout_width="300dp"
+                    android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_gravity="left"
+                    android:src="@drawable/main_wall"
+                    android:layout_margin="5dp"
+
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
+                    android:id="@+id/foodName"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="FOOD"
+                    android:fontFamily="cursive"
                     />
 
                 <TextView
-                    android:id="@+id/foodName"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:text="Rs. 20"
+                    android:fontFamily="sans-serif-black"
+
+                    />
+                </LinearLayout>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

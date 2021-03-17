@@ -10,41 +10,69 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:padding="10dp"
+
         app:cardElevation="10dp"
         app:cardCornerRadius="20dp"
-        android:layout_margin="10dp"
         app:cardBackgroundColor="@color/white"
         app:cardMaxElevation="12dp"
         app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        android:backgroundTint="@color/design_default_color_secondary">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_gravity="center"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="food"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/cartfood"
-                />
-
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewEnd"
-                android:text="Quantity"
-                android:layout_marginRight="30dp"
-                android:id="@+id/cartquant"
+                android:layout_gravity="center">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Burger"
+                android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/cartfood"
+                android:fontFamily="cursive"
                 />
 
-        </LinearLayout>
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Rs. 20"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:text="Quantity"
+                    android:layout_marginRight="30dp"
+                    android:id="@+id/cartquant"
+                    />
+            </RelativeLayout>
+           </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
+
+
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

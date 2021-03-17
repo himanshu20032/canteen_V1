@@ -5,11 +5,13 @@
     style="bold"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00897B"
+    android:background="@color/design_default_color_secondary"
     tools:context=".MainActivity">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
+        android:outlineAmbientShadowColor="@color/white"
+        android:outlineSpotShadowColor="@color/white"
         android:layout_width="0dp"
         android:layout_height="195dp"
         android:layout_marginStart="10dp"
@@ -35,6 +37,7 @@
         android:text="FOOD ORDER"
         android:textAlignment="center"
         android:textSize="60sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +53,7 @@
         android:text="- Your Own Canteen"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
