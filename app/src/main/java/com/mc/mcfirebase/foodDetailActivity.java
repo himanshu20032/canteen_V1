@@ -92,6 +92,7 @@ public class foodDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 foodData temp = DB.getOne(foodID);
+
                 if(temp == null)
                     DB.addToCart(new foodData(image,title,desc,foodID,price), Integer.parseInt(quantity.getText().toString()));
                 else
