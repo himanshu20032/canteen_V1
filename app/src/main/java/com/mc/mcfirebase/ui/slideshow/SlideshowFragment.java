@@ -52,6 +52,7 @@ public class SlideshowFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),placeOrderActivity.class);
+                //Database DB = new Database();
                 startActivityForResult(intent,10);
             }
         });
